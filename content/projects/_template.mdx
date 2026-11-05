@@ -1,0 +1,72 @@
+---
+# title（必填，string）：项目名称
+title: "运营数据看板"
+# summary（必填，string）：一句话简介，不超过 50 字
+summary: "整合多源数据为统一看板，支撑每日运营决策。"
+# period（必填，string）：起止年月，格式如 "2024.03–2024.08"
+period: "2024.03–2024.08"
+# role（必填，string）：担任角色，如「独立开发」「前端负责人」
+role: "前端负责人"
+# background（可选，string）：背景与目标，1~2 句
+background: >
+  业务侧原先依赖多个零散报表，数据口径不一致且更新滞后；
+  目标是搭建一个统一、可实时查看的运营看板。
+# techStack（必填，string[]）：3~6 项技术
+techStack:
+  - "Next.js"
+  - "TypeScript"
+  - "Tailwind CSS"
+  - "ECharts"
+# solutions（必填，string[]）：2~4 条核心方案，每条写清「怎么做 + 为什么」
+solutions:
+  - "用增量同步替代全量拉取，降低接口耗时并避免高峰期重复请求。"
+  - "以虚拟列表渲染万级数据，减少 DOM 数量并保持滚动帧率稳定。"
+  - "用统一状态层收敛筛选逻辑，降低组件耦合与后续维护成本。"
+# results（可选，string[]）：成果与数据，尽量量化
+results:
+  - "首屏加载时间由 3.2s 降至 1.4s，提升约 56%。"
+  - "上线后日均活跃使用人数提升 30%，需求迭代周期缩短一周。"
+# previewUrl（可选，string）：在线预览地址
+previewUrl: "https://example.com"
+# repoUrl（可选，string）：源码地址
+repoUrl: "https://github.com/example/repo"
+# coverImage（必填，string）：封面图路径；文件放在 public/images/cover/，填站内绝对路径，如 /images/cover/foo.webp
+coverImage: "/images/cover/example-cover.webp"
+# gallery（可选，string[]）：细节截图 / GIF 路径；文件放在 public/images/detail/，填站内绝对路径，如 /images/detail/foo-1.webp
+gallery:
+  - "/images/detail/example-1.webp"
+  - "/images/detail/example-2.webp"
+# order（可选，number）：排序权重，越小越靠前；有值项目优先于无值项目
+order: 1
+# draft（可选，boolean）：为 true 时不会出现在 getAllProjects 的结果中
+draft: true
+---
+
+{/* 使用提示：复制本文件后请删除 _template 字样并改名，同时修改或删除 draft: true。MDX 注释需使用此形式，HTML 注释无法通过 MDX 编译。 */}
+
+## 项目背景
+
+这个项目源于业务侧多个零散报表口径不一致、更新滞后的问题，目标是搭建一个统一、可实时查看的运营看板，让团队每天能基于同一份数据做决策。
+
+## 核心实现方案
+
+### 1. 增量同步替代全量拉取
+
+做法：按更新时间戳只拉取变化部分的数据。原因：全量同步在高峰期耗时过长，且容易产生重复请求，增量同步显著降低了接口耗时。
+
+### 2. 虚拟列表承载万级数据
+
+做法：只渲染可视区域内的行，滚动时动态替换数据。原因：直接渲染全部数据会带来大量 DOM 节点，导致滚动卡顿和内存占用上升。
+
+### 3. 统一状态层收敛筛选逻辑
+
+做法：把筛选、分页和排序状态集中到统一的数据层管理。原因：分散在各组件里的筛选逻辑容易不一致，后续新增筛选项的维护成本也很高。
+
+## 成果与数据
+
+- 首屏加载时间由 3.2 秒降至 1.4 秒，提升约 56%。
+- 上线后日均活跃使用人数提升 30%，需求迭代周期缩短约一周。
+
+## 补充说明
+
+部分业务数据与内部系统细节暂未公开，可在获得授权后补充说明。后续计划加入自定义看板配置与移动端适配。
