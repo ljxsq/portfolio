@@ -19,7 +19,7 @@ export const siteConfig: SiteConfigShape = {
   github: "https://github.com/chenmingyuan",
   linkedin: "https://www.linkedin.com/in/chenmingyuan",
   resumeUrl: "/resume/resume.pdf",
-  siteUrl: "https://chenmingyuan.dev",
+  siteUrl: "https://portfolio-ljxsq.vercel.app",
   skills: {
     语言: ["TypeScript", "JavaScript", "HTML / CSS", "Python"],
     框架: ["React", "Next.js", "Vue 3", "Tailwind CSS"],
