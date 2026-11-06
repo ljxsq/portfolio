@@ -115,35 +115,12 @@ git commit -m "content: add project your-slug"
 
 ## 部署到 Vercel
 
-仓库根目录已提供 `vercel.json`，显式指定静态托管：
-
-```json
-{
-  "framework": null,
-  "buildCommand": "npm run build",
-  "outputDirectory": "out",
-  "cleanUrls": true
-}
-```
-
-- `framework: null`：关闭框架自动识别，让 Vercel 按静态站处理，不启用 Next.js 服务端运行时
-- `buildCommand` / `outputDirectory`：执行 `npm run build`，把 `out/` 作为产物目录
-- `cleanUrls`：让 `/projects/interview-system` 正确映射到静态文件 `projects/interview-system.html`
-
-部署步骤：
-
 1. 将仓库推送到 GitHub
 2. 在 Vercel 中选择 **Add New Project**，导入该仓库
-3. 框架预设选择 **Other**（或留空，由 `vercel.json` 覆盖）；构建命令 `npm run build`，输出目录 `out`
+3. 保持默认的 Next.js 框架预设，构建命令为 `npm run build`
 4. 导入后自动部署，后续推送自动触发重新构建
-5. 首次部署完成后，把实际域名写回 `site.config.ts` 的 `siteUrl` 并重新部署
 
-说明：
-
-- `next.config.ts` 已固定 `output: "export"` 与 `images.unoptimized: true`，Vercel 构建时不会改变这两项配置
-- `out/` 保持在 `.gitignore` 中；Vercel 会自行构建，不需要提交构建产物
-- **不需要配置环境变量**；简历 PDF 等静态文件仍放在 `public/` 下随构建复制
-- `siteConfig.siteUrl` 影响 Open Graph / canonical 的绝对 URL，首次部署后必须回填真实域名，否则分享信息仍指向占位域名
+由于 `output: "export"` 输出的是纯静态文件（`out/`），**无需额外的服务端配置**。目前也不需要配置任何环境变量。
 
 ## 替换简历 PDF
 
