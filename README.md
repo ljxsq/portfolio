@@ -113,21 +113,12 @@ git add content/projects/your-slug.mdx public/images/cover/foo.webp public/image
 git commit -m "content: add project your-slug"
 ```
 
-## 部署到 Vercel
-
-1. 将仓库推送到 GitHub
-2. 在 Vercel 中选择 **Add New Project**，导入该仓库
-3. 保持默认的 Next.js 框架预设，构建命令为 `npm run build`
-4. 导入后自动部署，后续推送自动触发重新构建
-
-由于 `output: "export"` 输出的是纯静态文件（`out/`），**无需额外的服务端配置**。目前也不需要配置任何环境变量。
-
 ## 替换简历 PDF
 
 1. 将 PDF 放入 `public/resume/`
 2. 命名为 `resume.pdf`（完整路径为 `public/resume/resume.pdf`）
 3. `siteConfig.resumeUrl` 已指向 `/resume/resume.pdf`，无需修改代码
-4. 重新执行 `npm run build` 并部署；使用 Vercel 时推送后会自动重新构建
+4. 重新执行 `npm run build` 并部署更新后的文件
 
 > 仓库当前未附带示例 PDF，`public/resume/` 为空；在放入文件前，「下载简历」链接会返回 404。
 
