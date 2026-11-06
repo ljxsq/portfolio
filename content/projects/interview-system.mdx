@@ -16,7 +16,7 @@ solutions:
   - "录制与评估解耦：每题只上传视频并标记待评估，最后一题统一评估，避免逐题等待模型响应，也便于单题重试与重录。"
   - "用户、会话、题目与答案写入单文件 JSON，采用临时文件 rename 与 Promise 串行队列保证写入原子性，在无数据库的单机部署下避免并发覆盖。"
   - "使用 HS256 JWT + HttpOnly Cookie 登录，API 层校验登录态与资源归属，越权统一返回 404，避免引入第三方认证服务并防止越权访问。"
-previewUrl: "http://localhost:3000"
+previewUrl: "https://interview-system-dp7yu7hc2tqz.edgeone.cool/"
 coverImage: "/images/cover/interview-system.webp"
 # 封面为纯排版占位图，由 SVG 生成后转为 WebP，不是产品界面截图
 order: 1
@@ -55,4 +55,4 @@ order: 1
 
 - 存储为单机文件方案，不支持多实例或横向扩展；视频文件没有 TTL 或清理任务。
 - 项目没有自动化测试与 CI；登出只清除 Cookie，不能服务端吊销已签发 JWT。
-- 这是个人项目，没有公开访问地址与可核实的量化运营数据，因此未填写 `previewUrl`、`repoUrl`、`results` 和细节截图。
+- 这是个人项目，已提供线上预览地址；仓库源码与可核实的量化运营数据暂未公开，因此未填写 `repoUrl`、`results` 和细节截图。
